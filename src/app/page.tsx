@@ -1,36 +1,21 @@
 'use client';
 
-import { Camera, BookOpen, Search, Trophy, Sparkles } from 'lucide-react';
+import { Camera, BookOpen, Search, Info } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { getEstatisticasAlbum } from '@/lib/especies-data';
 
 export default function Home() {
-  const [stats, setStats] = useState({ total: 0, desbloqueadas: 0, percentual: 0 });
-
-  useEffect(() => {
-    const estatisticas = getEstatisticasAlbum();
-    setStats(estatisticas);
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-emerald-200 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">AnimalDex</h1>
-                <p className="text-xs text-gray-600">Descubra a Biodiversidade</p>
-              </div>
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
+              <span className="text-2xl">🦁</span>
             </div>
-            <div className="flex items-center gap-2 bg-gradient-to-r from-amber-100 to-yellow-100 px-3 py-1.5 rounded-full border border-amber-300">
-              <Trophy className="w-4 h-4 text-amber-600" />
-              <span className="text-sm font-bold text-amber-900">{stats.desbloqueadas}/{stats.total}</span>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900">AnimalDex</h1>
+              <p className="text-xs text-gray-600">Identificador de Espécies</p>
             </div>
           </div>
         </div>
@@ -40,31 +25,14 @@ export default function Home() {
       <section className="container mx-auto px-4 py-8 sm:py-12">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <Sparkles className="w-4 h-4" />
+            <Info className="w-4 h-4" />
             Catálogo Completo da Biodiversidade
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Explore o Reino Animal
+            Identifique Qualquer Animal
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Identifique espécies com sua câmera, colecione figurinhas digitais e aprenda sobre todos os animais do planeta!
-          </p>
-        </div>
-
-        {/* Progresso do Álbum */}
-        <div className="max-w-md mx-auto mb-8 bg-white rounded-2xl p-6 shadow-lg border border-emerald-100">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-gray-700">Progresso do Álbum</span>
-            <span className="text-2xl font-bold text-emerald-600">{stats.percentual}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-            <div 
-              className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500"
-              style={{ width: `${stats.percentual}%` }}
-            />
-          </div>
-          <p className="text-xs text-gray-500 mt-2 text-center">
-            {stats.desbloqueadas} de {stats.total} espécies desbloqueadas
+            Use sua câmera para identificar espécies em tempo real e explore o catálogo completo de animais do planeta!
           </p>
         </div>
 
@@ -81,7 +49,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">Identificar Animal</h3>
               <p className="text-blue-100 text-sm mb-4">
-                Use sua câmera para identificar espécies em tempo real e desbloquear figurinhas
+                Use sua câmera para identificar espécies em tempo real com inteligência artificial
               </p>
               <div className="flex items-center gap-2 text-white font-medium">
                 <span>Abrir Câmera</span>
@@ -90,30 +58,27 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Álbum de Figurinhas */}
-          <Link href="/album">
+          {/* Catálogo de Espécies */}
+          <Link href="/catalogo">
             <div className="group bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
               <div className="flex items-start justify-between mb-4">
                 <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <BookOpen className="w-8 h-8 text-white" />
                 </div>
-                <div className="px-2 py-1 bg-white/20 rounded-full text-xs text-white font-bold">
-                  {stats.desbloqueadas}
-                </div>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Meu Álbum</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Catálogo Completo</h3>
               <p className="text-purple-100 text-sm mb-4">
-                Veja sua coleção de figurinhas e explore todas as espécies catalogadas
+                Explore todas as espécies catalogadas com informações científicas detalhadas
               </p>
               <div className="flex items-center gap-2 text-white font-medium">
-                <span>Ver Coleção</span>
+                <span>Ver Catálogo</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </div>
             </div>
           </Link>
 
           {/* Explorar Categorias */}
-          <Link href="/album?categoria=terrestre">
+          <Link href="/catalogo?categoria=terrestre">
             <div className="group bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
               <div className="flex items-start justify-between mb-4">
                 <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -142,12 +107,12 @@ export default function Home() {
                   Especial
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Meu Pet</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Identificar Pet</h3>
               <p className="text-pink-100 text-sm mb-4">
-                Capture foto-figurinhas dos seus cães e gatos domésticos
+                Identifique raças de cães e gatos domésticos com precisão
               </p>
               <div className="flex items-center gap-2 text-white font-medium">
-                <span>Fotografar Pet</span>
+                <span>Identificar Pet</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </div>
             </div>
@@ -178,11 +143,11 @@ export default function Home() {
 
           <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
             <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-2xl">🏆</span>
+              <span className="text-2xl">🤖</span>
             </div>
-            <h4 className="font-bold text-gray-900 mb-2">Colecionável</h4>
+            <h4 className="font-bold text-gray-900 mb-2">IA Avançada</h4>
             <p className="text-sm text-gray-600">
-              Sistema de figurinhas para incentivar descoberta e aprendizado
+              Identificação instantânea com inteligência artificial de última geração
             </p>
           </div>
         </div>

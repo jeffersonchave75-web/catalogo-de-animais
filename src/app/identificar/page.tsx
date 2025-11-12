@@ -42,16 +42,14 @@ function IdentificarContent() {
       confianca: 95,
       categoria: 'terrestre',
       id: 'cachorro',
-      mensagem: '🎉 Figurinha do seu pet capturada com sucesso!',
-      desbloqueada: true
+      mensagem: '✅ Animal identificado com sucesso!'
     } : {
       especie: 'Leão',
       nomeCientifico: 'Panthera leo',
       confianca: 92,
       categoria: 'terrestre',
       id: 'leao',
-      mensagem: '✨ Nova espécie identificada e desbloqueada!',
-      desbloqueada: true
+      mensagem: '✅ Espécie identificada com sucesso!'
     };
 
     setResultado(resultadoMock);
@@ -79,10 +77,10 @@ function IdentificarContent() {
             </Link>
             <div>
               <h1 className="text-xl font-bold text-gray-900">
-                {tipoPet ? 'Fotografar Meu Pet' : 'Identificar Animal'}
+                {tipoPet ? 'Identificar Pet' : 'Identificar Animal'}
               </h1>
               <p className="text-xs text-gray-600">
-                {tipoPet ? 'Capture uma foto-figurinha do seu pet' : 'Use a câmera ou envie uma foto'}
+                {tipoPet ? 'Identifique raças de cães e gatos' : 'Use a câmera ou envie uma foto'}
               </p>
             </div>
           </div>
@@ -98,11 +96,11 @@ function IdentificarContent() {
                 <Camera className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                {tipoPet ? 'Fotografe seu Pet' : 'Identificação por Imagem'}
+                {tipoPet ? 'Identificar Pet' : 'Identificação por Imagem'}
               </h2>
               <p className="text-gray-600 mb-8">
                 {tipoPet 
-                  ? 'Tire uma foto do seu cão ou gato para criar uma figurinha personalizada no álbum'
+                  ? 'Tire uma foto do seu cão ou gato para identificar a raça com precisão'
                   : 'Envie uma foto de qualquer animal e nossa IA identificará a espécie instantaneamente'
                 }
               </p>
@@ -155,7 +153,7 @@ function IdentificarContent() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-amber-500 mt-0.5">•</span>
-                  <span>Para pets: capture características únicas</span>
+                  <span>Para pets: capture características únicas da raça</span>
                 </li>
               </ul>
             </div>
